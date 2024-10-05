@@ -1,0 +1,19 @@
+name: Example Workflow Using My Python Action
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-my-action:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Custom Python Action
+        uses: your-username/your-repo@main
+        with:
+          example_input: 'Hello from my workflow!'
