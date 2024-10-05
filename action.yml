@@ -12,4 +12,4 @@ runs:
   image: 'Dockerfile'
   args:
     - --identityFile="${{ inputs.identityFile }}"
-    - --example_input2="${{ inputs.githubEvent }}"
+    - --githubEvent="${{ inputs.githubEvent }}"
