@@ -1,8 +1,9 @@
 import sys
 import requests
 
-def main(param1):
-    print(f"Input was: {param1}")
+def main(param1, param2):
+    print(f"Input1 was: {param1}")
+    print(f"Input2 was: {param2}")
     response = requests.get("https://api.github.com")
     if response.status_code == 200:
         print("GitHub API call succeeded.")

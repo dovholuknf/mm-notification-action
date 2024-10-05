@@ -4,6 +4,9 @@ inputs:
   example_input:
     description: 'Example input to show how to use inputs.'
     required: true
+  example_input2:
+    description: 'Example input to show how to use inputs.'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
