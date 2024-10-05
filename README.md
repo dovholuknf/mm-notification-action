@@ -3,6 +3,7 @@
 Debug with:
 ```text
 docker build -t python-action .
-example=$(cat example.json)
-docker run --rm python-action --example_input1="<input1>" --example_input2="$example"
+exampleIdentityFile=$(cat example.id.json)
+exampleGithubEvent=$(cat example.github.event.json)
+docker run --rm python-action --identityFile="${exampleIdentityFile}" --githubEvent="${exampleGithubEvent}}"
 ```
