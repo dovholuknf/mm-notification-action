@@ -1,5 +1,4 @@
 import sys
-import os
 import requests
 
 def main(param1, param2):
@@ -14,7 +13,7 @@ def main(param1, param2):
     return "Process completed."
 
 if __name__ == "__main__":
-    param1 = os.getenv("example_input")
-    param2 = os.getenv("example_input2")
+    param1 = sys.argv[1] if len(sys.argv) > 1 else "No Input Provided"
+    param2= sys.argv[2] if len(sys.argv) > 2 else "No Input Provided"
     result = main(param1, param2)
     print(f"Output: {result}")
