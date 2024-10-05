@@ -1,2 +1,7 @@
 # mm-notification-action
-farting around with github actions trying to learn a thing
+
+Debug with:
+```text
+docker build -t python-action .
+docker run --rm python-action "<input1>" "<input2>"
+```

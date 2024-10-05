@@ -1,9 +1,10 @@
-import sys
+import argparse
 import requests
 
-def main(param1, param2):
-    print(f"Input1 was: {param1}")
-    print(f"Input2 was: {param2}")
+
+def main(args):
+    print(f"Input1 was: {args.example_input1}")
+    print(f"Input2 was: {args.example_input2}")
     response = requests.get("https://api.github.com")
     if response.status_code == 200:
         print("GitHub API call succeeded.")
@@ -12,8 +13,13 @@ def main(param1, param2):
 
     return "Process completed."
 
+
 if __name__ == "__main__":
-    param1 = sys.argv[1] if len(sys.argv) > 1 else "No Input Provided"
-    param2= sys.argv[2] if len(sys.argv) > 2 else "No Input Provided"
-    result = main(param1, param2)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--example_input1', type=str, default="No Input Provided")
+    parser.add_argument('--example_input2', type=str, default="No Input Provided")
+
+    args = parser.parse_args()
+
+    result = main(args)
     print(f"Output: {result}")
