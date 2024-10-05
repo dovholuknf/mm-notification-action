@@ -3,8 +3,8 @@ import requests
 
 
 def main(args):
-    print(f"Input1 was: {args.example_input1}")
-    print(f"Input2 was: {args.example_input2}")
+    print(f"Input1 was: {args.identityFile}")
+    print(f"Input2 was: {args.githubEvent}")
     response = requests.get("https://api.github.com")
     if response.status_code == 200:
         print("GitHub API call succeeded.")
@@ -16,8 +16,8 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--example_input1', type=str, default="No Input Provided")
-    parser.add_argument('--example_input2', type=str, default="No Input Provided")
+    parser.add_argument('--identityFile', type=str, default="No Input Provided")
+    parser.add_argument('--githubEvent', type=str, default="No Input Provided")
 
     args = parser.parse_args()
 
