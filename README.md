@@ -2,6 +2,7 @@
 
 Debug with:
 ```text
+clear
 docker build -t python-action .
 exampleIdentityFile=$(cat example.id.json)
 exampleGithubEvent=$(cat example.github.event.json)

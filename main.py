@@ -3,8 +3,8 @@ import requests
 
 
 def main(args):
-    print(f"Input1 was: {args.identityFile}")
-    print(f"Input2 was: {args.githubEvent}")
+    print(f"identityFile was: {args.identityFile}")
+    print(f"githubEvent was: {args.githubEvent}")
     response = requests.get("https://api.github.com")
     if response.status_code == 200:
         print("GitHub API call succeeded.")
