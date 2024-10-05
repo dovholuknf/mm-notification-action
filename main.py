@@ -14,5 +14,5 @@ def main(param1, param2):
 
 if __name__ == "__main__":
     param1 = sys.argv[1] if len(sys.argv) > 1 else "No Input Provided"
-    result = main(param1)
+    result = main(param1, param2)
     print(f"Output: {result}")
