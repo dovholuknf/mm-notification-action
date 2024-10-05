@@ -1,0 +1,13 @@
+name: 'Python GitHub Action'
+description: 'A reusable Python action.'
+inputs:
+  example_input:
+    description: 'Example input to show how to use inputs.'
+    required: true
+    default: 'Hello, World!'
+outputs:
+  example_output:
+    description: 'Example output to show how to use outputs.'
+runs:
+  using: 'python'
+  main: 'main.py'
