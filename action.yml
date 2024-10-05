@@ -1,30 +1,9 @@
 name: 'Python GitHub Action'
 description: 'A reusable Python action.'
-branding:
-  icon: 'zap'
-  color: 'red'
 inputs:
-  zitiId:
-    description: 'Identity JSON for an enrolled Ziti endpoint'
+  example_input:
+    description: 'Example input to show how to use inputs.'
     required: true
-  webhookUrl:
-    description: 'URL for posting the payload'
-    required: true
-  eventJson:
-    description: 'GitHub event JSON (github.event)'
-    required: true
-  senderUsername:
-    description: 'Mattermost username'
-    required: false
-    default: "GithubZ"
-  senderIconUrl:
-    description: 'Mattermost user icon URL'
-    required: false
-    default: "https://github.com/fluidicon.png"
-  destChannel:
-    description: 'Mattermost channel'
-    required: false
-    default: "dev-notifications"
 runs:
-  using: "docker"
-  image: "Dockerfile"
+  using: 'docker'
+  image: 'Dockerfile'
