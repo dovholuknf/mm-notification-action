@@ -9,4 +9,5 @@ ENV PYTHONPATH=/app
 ENV ZITI_LOG=6
 ENV TLSUV_DEBUG=6
 
-CMD ["python", "./main.py"]
+ENTRYPOINT ["python", "main.py"]
+
