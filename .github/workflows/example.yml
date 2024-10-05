@@ -20,4 +20,4 @@ jobs:
         uses: dovholuknf/mm-notification-action@main
         with:
           example_input: 'Hello from my workflow!'
-          example_input2: github.event
+          example_input2: ${{ github.event }}
