@@ -16,9 +16,9 @@ jobs:
       - name: Secure webhook call
         uses: dovholuknf/mm-notification-action@main
         with:
-          identityFile: ${{ secrets.ZITI_MATTERMOST_IDENTITY }}
+          identityFile: ${{ cat(example.id.json) }}
           githubEvent:  ${{ toJson(github.event) }}
           url: ${{ secrets.ZHOOK_URL }}
           eventName: ${{ github.event_name }}
           destChannel: "zssh"
-          
+
