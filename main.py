@@ -361,6 +361,7 @@ if __name__ == "__main__":
 
   print("========================================================")
   print(args.identityFile[:100])
+  print(args.identityFile[-100:])
   loadedFile = json.loads(args.identityFile)
   print("========================================================")
   idFilename = "id.json"
