@@ -391,7 +391,7 @@ if __name__ == "__main__":
   # headers = {'Content-Type': 'application/json'}
   # data = mwb.dumpJson()
   headers = {'Content-Type': 'application/json'}
-  data = "sigh"
+  data = "{}"
   with openziti.monkeypatch():
     try:
       print(f"Posting webhook to {args.url} with headers {headers} and data {data}")
