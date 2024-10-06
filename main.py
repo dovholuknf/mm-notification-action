@@ -379,7 +379,6 @@ if __name__ == "__main__":
 
   print(first_hundred_characters)
 
-
   # Create webhook body
   try:
     mwb = MattermostWebhookBody(args.username, icon, channel, eventName, args.githubEvent, actionRepo)
