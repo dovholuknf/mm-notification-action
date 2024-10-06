@@ -1,6 +1,6 @@
 import argparse
 import json
-import re
+import os
 
 import openziti
 import requests
@@ -353,12 +353,12 @@ if __name__ == "__main__":
   parser.add_argument('--githubEvent', type=str, default="No Input Provided")
   parser.add_argument('--url', type=str, default="No Input Provided")
   parser.add_argument('--username', type=str, default="GitHubZ")
+  parser.add_argument('--destChannel', type=str, default="dev-notifications")
+  parser.add_argument('--senderIcon', type=str, default="https://github.com/fluidicon.png")
   args = parser.parse_args()
 
-  icon = "icon"
-  channel = "zssh"
-  eventName = "eventName"
-  actionRepo = "openziti-test-kitchen/zssh"
+  actionRepo = os.getenv("GITHUB_ACTION_REPOSITORY")
+  eventName = os.getenv("GITHUB_EVENT_NAME")
 
   # print("========================================================")
   # print(args.identityFile[:100])
@@ -377,7 +377,7 @@ if __name__ == "__main__":
 
   # Create webhook body
   try:
-    mwb = MattermostWebhookBody(args.username, icon, channel, eventName, args.githubEvent, actionRepo)
+    mwb = MattermostWebhookBody(args.username, args.senderIcon, args.destChannel, eventName, args.githubEvent, actionRepo)
   except Exception as e:
     print(f"Exception creating webhook body: {e}")
     raise e

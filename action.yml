@@ -18,6 +18,10 @@ inputs:
     description: 'The channel in mattermost to send the event to'
     required: false
     default: "dev-notifications"
+  senderIcon:
+    description: 'The icon to use for the sender'
+    required: false
+    default: "https://github.com/fluidicon.png"
 runs:
   using: 'docker'
   image: 'Dockerfile'

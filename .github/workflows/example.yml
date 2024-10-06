@@ -19,3 +19,6 @@ jobs:
           identityFile: ${{ secrets.ZITI_MATTERMOST_IDENTITY }}
           githubEvent:  ${{ toJson(github.event) }}
           url: ${{ secrets.ZHOOK_URL }}
+          eventName: ${{ github.event_name }}
+          destChannel: "zssh"
+          
