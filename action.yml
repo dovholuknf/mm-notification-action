@@ -7,9 +7,13 @@ inputs:
   githubEvent:
     description: 'The GitHub event to process'
     required: true
+  url:
+    description: 'The url to send the payload to'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - --identityFile="${{ inputs.identityFile }}"
     - --githubEvent="${{ inputs.githubEvent }}"
+    - --url="${{ inputs.url }}"
