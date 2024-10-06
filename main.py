@@ -363,6 +363,7 @@ if __name__ == "__main__":
   print("========================================================")
   print(f"xx={args.identityFile[:100]}")
   print(f"yy={args.identityFile[:-100]}")
+  print(f"zz={len(args.identityFile)}")
   print("========================================================")
   idFilename = "id.json"
 
