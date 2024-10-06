@@ -13,11 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run Custom Python Action
-        env:
-          ENV_VAR_1: "envvar1"
-          ENV_VAR_2: "envvar2"
+      - name: Secure webhook call
         uses: dovholuknf/mm-notification-action@main
         with:
-          identityFile: 'Hello from my workflow!'
-          githubEvent: ${{ toJson(github.event) }}
+          identityFile: ${{ secrets.ZITI_MATTERMOST_IDENTITY }}
+          githubEvent:  ${{ toJson(github.event) }}
+          url: ${{ secrets.ZHOOK_URL }}
+          username: "GitHubZ"
+          destChannel: "dev-notifications"
