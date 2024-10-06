@@ -1,5 +1,7 @@
 import argparse
 import json
+
+import openziti
 import requests
 
 
@@ -17,7 +19,6 @@ class MattermostWebhookBody:
   releaseColor = "#DB7093"
   todoColor = "#FFFFFF"
   watchColor = "#FFD700"
-
   def __init__(self, username, icon, channel, eventName, eventJsonStr, actionRepo):
     self.username = username
     self.icon = icon
@@ -341,56 +342,49 @@ class MattermostWebhookBody:
   def addDefaultDetails(self):
     self.attachment["color"] = self.todoColor
     self.attachment["text"] = self.createTitle()
-    self.attachment["fallback"] = f"{self.eventName.capitalize().replace('_', ' ')} by {self.senderJson['login']} in {self.repoJson['full_name']}"
+    self.attachment["fallback"] = f"{eventName.capitalize().replace('_', ' ')} by {self.senderJson['login']} in {self.repoJson['full_name']}"
 
   def dumpJson(self):
     return json.dumps(self.body)
 
 
-
-
-
-
-
-
-
-
-def main(args):
-    print(f"identityFile was: {args.identityFile}")
-    print(f"githubEvent was: {args.githubEvent}")
-    response = requests.get("https://api.github.com")
-    if response.status_code == 200:
-        print("GitHub API call succeeded.")
-    else:
-        print("GitHub API call failed.")
-
-    return "Process completed."
-
-
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--identityFile', type=str, default="No Input Provided")
-    parser.add_argument('--githubEvent', type=str, default="No Input Provided")
+  parser = argparse.ArgumentParser()
+  parser.add_argument('--identityFile', type=str, default="No Input Provided")
+  parser.add_argument('--githubEvent', type=str, default="No Input Provided")
+  parser.add_argument('--url', type=str, default="No Input Provided")
+  parser.add_argument('--username', type=str, default="GitHubZ")
+  args = parser.parse_args()
 
-    args = parser.parse_args()
+  icon = "icon"
+  channel = "zssh"
+  eventName = "eventName"
+  actionRepo = "openziti-test-kitchen/zssh"
 
-    result = main(args)
-    print(f"Output: {result}")
+  idFilename = "id.json"
+  with open(idFilename, 'w') as f:
+    f.write(args.identityFile)
+    openziti.load(idFilename)
 
-    username = "username"
-    icon = "icon"
-    channel = "channel"
-    eventName = "eventName"
-    eventJsonStr = args.githubEvent
-    actionRepo = "actionRepo"
+  # Create webhook body
+  try:
+    mwb = MattermostWebhookBody(args.username, icon, channel, eventName, args.githubEvent, actionRepo)
+  except Exception as e:
+    print(f"Exception creating webhook body: {e}")
+    raise e
 
-    # Create webhook body
+  # Post the webhook over Ziti
+  headers = {'Content-Type': 'application/json'}
+  data = mwb.dumpJson()
+
+  with openziti.monkeypatch():
     try:
-        mwb = MattermostWebhookBody(username, icon, channel, eventName, eventJsonStr, actionRepo)
+      print(f"Posting webhook to {args.url} with headers {headers} and data {data}")
+      # breakpoint()
+      r = requests.post(args.url, headers=headers, data=data)
+      print(f"Response Status: {r.status_code}")
+      print(r.headers)
+      print(r.content)
     except Exception as e:
-        print(f"Exception creating webhook body: {e}")
-        raise e
-
-    # Post the webhook over Ziti
-    headers = {'Content-Type': 'application/json'}
-    data = mwb.dumpJson()
+      print(f"Exception posting webhook: {e}")
+      raise e
