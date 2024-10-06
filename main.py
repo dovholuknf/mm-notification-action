@@ -360,12 +360,10 @@ if __name__ == "__main__":
   eventName = "eventName"
   actionRepo = "openziti-test-kitchen/zssh"
 
-  print("========================================================")
-  print(args.identityFile[:100])
-  print(args.identityFile[-100:])
-
-  #loadedFile = json.loads(cleaned_json_string)
-  print("========================================================")
+  # print("========================================================")
+  # print(args.identityFile[:100])
+  # print(args.identityFile[-100:])
+  # print("========================================================")
   idFilename = "id.json"
 
   with open(idFilename, 'w') as f:
