@@ -359,10 +359,19 @@ if __name__ == "__main__":
   eventName = "eventName"
   actionRepo = "openziti-test-kitchen/zssh"
 
+  loadedFile = json.loads(args.identityFile)
+  print(f"{loadedFile["ztAPI"]}")
   idFilename = "id.json"
+
   with open(idFilename, 'w') as f:
     f.write(args.identityFile)
     openziti.load(idFilename)
+
+  with open(idFilename, 'r') as r:
+      first_hundred_characters = r.read(100)
+
+  print(first_hundred_characters)
+
 
   # Create webhook body
   try:
