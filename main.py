@@ -285,8 +285,6 @@ class MattermostWebhookBody:
     try:
       r = requests.get(userUrl)
       print(f"Get User Info Response Status: {r.status_code}")
-      # print(r.headers)
-      # print(r.content)
 
       userDetailsJson = json.loads(r.content)
 
