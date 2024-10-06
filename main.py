@@ -366,7 +366,7 @@ if __name__ == "__main__":
   cleaned_json_string = re.sub(r'[\x00-\x1F\x7F]', '', args.identityFile)
   print(cleaned_json_string[:100])
   print(cleaned_json_string[-100:])
-  loadedFile = json.loads(cleaned_json_string)
+  #loadedFile = json.loads(cleaned_json_string)
   print("========================================================")
   idFilename = "id.json"
 
