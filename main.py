@@ -359,6 +359,8 @@ if __name__ == "__main__":
   eventName = "eventName"
   actionRepo = "openziti-test-kitchen/zssh"
 
+  print("========================================================")
+  print(args.identityFile[:100])
   loadedFile = json.loads(args.identityFile)
   print(f"{loadedFile["ztAPI"]}")
   idFilename = "id.json"
