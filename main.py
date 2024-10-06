@@ -1,5 +1,6 @@
 import argparse
 import json
+import re
 
 import openziti
 import requests
@@ -362,7 +363,10 @@ if __name__ == "__main__":
   print("========================================================")
   print(args.identityFile[:100])
   print(args.identityFile[-100:])
-  loadedFile = json.loads(args.identityFile)
+  cleaned_json_string = re.sub(r'[\x00-\x1F\x7F]', '', args.identityFile)
+  print(cleaned_json_string[:100])
+  print(cleaned_json_string[-100:])
+  loadedFile = json.loads(cleaned_json_string)
   print("========================================================")
   idFilename = "id.json"
 
