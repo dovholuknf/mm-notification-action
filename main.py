@@ -360,10 +360,10 @@ if __name__ == "__main__":
   actionRepo = os.getenv("GITHUB_ACTION_REPOSITORY")
   eventName = os.getenv("GITHUB_EVENT_NAME")
 
-  # print("========================================================")
-  # print(args.identityFile[:100])
-  # print(args.identityFile[-100:])
-  # print("========================================================")
+  print("========================================================")
+  print(args.identityFile[:100])
+  print(args.identityFile[-100:])
+  print("========================================================")
   idFilename = "id.json"
 
   with open(idFilename, 'w') as f:
