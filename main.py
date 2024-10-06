@@ -381,16 +381,17 @@ if __name__ == "__main__":
 
 
   # Create webhook body
-  try:
-    mwb = MattermostWebhookBody(args.username, icon, channel, eventName, args.githubEvent, actionRepo)
-  except Exception as e:
-    print(f"Exception creating webhook body: {e}")
-    raise e
-
-  # Post the webhook over Ziti
+  # try:
+  #   mwb = MattermostWebhookBody(args.username, icon, channel, eventName, args.githubEvent, actionRepo)
+  # except Exception as e:
+  #   print(f"Exception creating webhook body: {e}")
+  #   raise e
+  #
+  # # Post the webhook over Ziti
+  # headers = {'Content-Type': 'application/json'}
+  # data = mwb.dumpJson()
   headers = {'Content-Type': 'application/json'}
-  data = mwb.dumpJson()
-
+  data = "sigh"
   with openziti.monkeypatch():
     try:
       print(f"Posting webhook to {args.url} with headers {headers} and data {data}")
