@@ -10,6 +10,14 @@ inputs:
   url:
     description: 'The url to send the payload to'
     required: true
+  username:
+    description: 'The username making the event'
+    required: false
+    default: "GitHubZ"
+  destChannel:
+    description: 'The channel in mattermost to send the event to'
+    required: false
+    default: "dev-notifications"
 runs:
   using: 'docker'
   image: 'Dockerfile'
