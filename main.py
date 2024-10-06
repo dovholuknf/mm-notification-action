@@ -362,7 +362,7 @@ if __name__ == "__main__":
   print("========================================================")
   print(args.identityFile[:100])
   loadedFile = json.loads(args.identityFile)
-  print(f"{loadedFile["ztAPI"]}")
+  print("========================================================")
   idFilename = "id.json"
 
   with open(idFilename, 'w') as f:
